@@ -1,0 +1,1 @@
+g++ -std=c++11 src/ecs/entity.cpp src/ecs/entity_manager.cpp src/main.cpp src/system/move_system.cpp src/ecs/component.cpp src/component/moveable.cpp src/component/transform.cpp src/ecs/system_manager.cpp src/system/render_system.cpp -o main
