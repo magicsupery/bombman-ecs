@@ -77,4 +77,7 @@ private:
 
 };
 
+using EntityPtr =
+	std::shared_ptr<Entity>;
+
 #endif

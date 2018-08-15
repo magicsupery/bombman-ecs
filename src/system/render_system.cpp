@@ -5,10 +5,12 @@
 
 #include <iostream>
 
+System::SystemType RenderSystem::system_id = 2;
+
 void RenderSystem::tick(float dt)
 {
 	//tmp code show the entity pos
-	auto transform_ents_ptr = EntityManager::getInstance()->getEntitiesByComp(1);
+	auto transform_ents_ptr = EntityManager::getInstance()->getEntitiesByComp<Transform>();
 	if(transform_ents_ptr == nullptr)
 		return;
 

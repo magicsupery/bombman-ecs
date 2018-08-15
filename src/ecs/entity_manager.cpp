@@ -99,15 +99,6 @@ void EntityManager::notifyRemoveComponent(EntityPtr ent_ptr, Component::CompType
 }
 
 
-EntityManager::EntityPtrVecotrPtr EntityManager::getEntitiesByComp(int comp_id)
-{
-	if(comp_entities_.find(comp_id) == comp_entities_.end())
-	{
-		return nullptr;
-	}
-
-	return std::make_shared<std::vector<EntityPtr> >(comp_entities_[comp_id]);
-}
 void EntityManager::debugEntityInfo()
 {
 	std::cout << "==========debug entit info =================" << std::endl;

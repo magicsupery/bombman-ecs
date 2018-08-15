@@ -6,10 +6,11 @@
 class Moveable: public Component
 {
 public:
+	int speed_x;
+	int speed_y;
 	int speed;
-	int derection;
 	virtual std::string name() {return "Moveable";}
-
+public:
 	virtual Component::CompType getCompId() {return Moveable::comp_id;}
 	static Component::CompType comp_id;
 };

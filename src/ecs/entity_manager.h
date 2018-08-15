@@ -22,7 +22,19 @@ public:
 
 	void addEntity(EntityPtr ent_ptr);
 	void removeEntity(EntityPtr ent_ptr);
-	EntityPtrVecotrPtr  getEntitiesByComp(Component::CompType comp_id);
+
+	template <typename T>
+	inline EntityPtrVecotrPtr getEntitiesByComp()
+	{
+
+		auto comp_id = T::comp_id;
+		if(comp_entities_.find(comp_id) == comp_entities_.end())
+		{
+			return nullptr;
+		}
+
+		return std::make_shared<std::vector<EntityPtr> >(comp_entities_[comp_id]);
+		}
 
 	void debugEntityInfo();
 public:
