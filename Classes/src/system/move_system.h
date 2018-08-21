@@ -6,6 +6,8 @@
 
 #include "../component/controller.hpp"
 
+namespace ecs
+{
 class MoveSystem : public System
 {
 public:
@@ -17,6 +19,6 @@ public:
 public:
 	void handleMoveOp(EntityPtr ent_tpr, uint64_t op);
 };
-
+} //ecs
 #endif
 

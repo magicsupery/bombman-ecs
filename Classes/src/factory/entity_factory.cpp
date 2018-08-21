@@ -7,6 +7,8 @@
 
 #include "../context/game_context.h"
 
+namespace ecs
+{
 EntityFactory* EntityFactory::instance_ = nullptr;
 
 EntityFactory::EntityFactory()
@@ -55,3 +57,4 @@ EntityPtr EntityFactory::createP1()
 	return entity_ptr;
 }
 
+} //ecs

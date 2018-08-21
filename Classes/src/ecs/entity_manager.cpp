@@ -2,7 +2,8 @@
 #include "entity.hpp"
 
 #include <iostream>
-
+namespace ecs
+{
 EntityManager* EntityManager::instance_ = nullptr;
 
 EntityManager::EntityManager()
@@ -124,3 +125,4 @@ void EntityManager::debugEntityInfo()
 	std::cout << " } " << std::endl;
 	std::cout << "=============================================" << std::endl;
 }
+}//ecs

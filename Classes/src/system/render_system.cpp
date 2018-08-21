@@ -4,6 +4,8 @@
 #include "../component/transform.hpp"
 #include "../component/model.hpp"
 
+namespace ecs
+{
 System::SystemType RenderSystem::system_id = 2;
 
 void RenderSystem::tick(float dt)
@@ -30,3 +32,4 @@ void RenderSystem::tick(float dt)
 
 	}
 }
+}//ecs

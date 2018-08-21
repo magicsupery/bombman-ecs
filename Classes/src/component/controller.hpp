@@ -7,6 +7,8 @@
 #include "../helper/utils.hpp"
 
 
+namespace  ecs
+{
 /*
  * 用于记录当前的控制器操作
  * 通过键盘输入或者网络输入改变controller的操作
@@ -45,5 +47,6 @@ public:
 	virtual Component::CompType getCompId() {return Controller::comp_id;}
 	static Component::CompType comp_id;
 };
+} //ecs
 #endif
 

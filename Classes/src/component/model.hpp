@@ -5,6 +5,8 @@
 
 #include "cocos2d.h"
 
+namespace ecs
+{
 class Model: public Component
 {
 public:
@@ -21,4 +23,6 @@ public:
 	cocos2d::Sprite* model_sprite;
 
 };
+
+} //ecs
 #endif

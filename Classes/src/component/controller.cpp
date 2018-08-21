@@ -1,5 +1,7 @@
 #include "controller.hpp"
 
+namespace ecs
+{
 Component::CompType Controller::comp_id = 3;
 
 void Controller::addOp(ControllerOp op, ControllerOpData op_data)
@@ -10,3 +12,5 @@ void Controller::addOp(ControllerOp op, ControllerOpData op_data)
 
 	op_map_[op] |= op_data;
 }
+
+} //ecs

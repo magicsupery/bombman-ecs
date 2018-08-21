@@ -6,6 +6,8 @@
 
 #include "component.h"
 
+namespace ecs
+{
 class Entity: public std::enable_shared_from_this<Entity>
 {
 using ComponentMap =
@@ -79,5 +81,5 @@ private:
 
 using EntityPtr =
 	std::shared_ptr<Entity>;
-
+}; //ecs
 #endif

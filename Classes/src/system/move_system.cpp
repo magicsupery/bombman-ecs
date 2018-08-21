@@ -5,7 +5,10 @@
 #include "../component/transform.hpp"
 #include "../component/controller.hpp"
 
+#include "cocos2d.h"
 
+namespace ecs
+{
 System::SystemType MoveSystem::system_id = 1;
 
 void MoveSystem::tick(float dt)
@@ -29,6 +32,7 @@ void MoveSystem::tick(float dt)
 		auto dist_y = move_comp_ptr->speed_y * dt;
 		transform_comp_ptr->pos_x += dist_x;
 		transform_comp_ptr->pos_y += dist_y;
+		CCLOG("posx is %f, posy is %f", transform_comp_ptr->pos_x, transform_comp_ptr->pos_y);
 	}
 
 }
@@ -42,4 +46,8 @@ void MoveSystem::handleMoveOp(EntityPtr ent_ptr, uint64_t op)
 
 	move_comp_ptr->speed_x = (op & ControllerOpData::Rigth - op & ControllerOpData::Left) * move_comp_ptr->speed;
 	move_comp_ptr->speed_y = (op & ControllerOpData::Up- op & ControllerOpData::Down) * move_comp_ptr->speed;
+
+	CCLOG("speed x is %f, speed y is %f", move_comp_ptr->speed_x, move_comp_ptr->speed_y);
 }
+
+} //ecs

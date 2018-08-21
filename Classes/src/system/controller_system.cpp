@@ -1,16 +1,21 @@
 #include "controller_system.h"
+#include "move_system.h"
 
 #include "../ecs/entity_manager.h"
 #include "../ecs/system_manager.h"
 
 #include "../component/controller.hpp"
 
-#include "move_system.h"
+#include "../context/game_context.h"
+#include "../helper/utils.hpp"
 
+namespace ecs
+{
 System::SystemType ControllerSystem::system_id = 3;
 
 void ControllerSystem::tick(float dt)
 {
+
 	auto controller_ents_ptr = EntityManager::getInstance()->getEntitiesByComp<Controller>();
 
 	if(controller_ents_ptr == nullptr)
@@ -35,3 +40,4 @@ void ControllerSystem::tick(float dt)
 	}
 
 }
+} //ecs

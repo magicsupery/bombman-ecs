@@ -4,7 +4,8 @@
 #include <map>
 
 #include "entity.hpp"
-
+namespace ecs
+{
 class EntityManager
 {
 using EntityPtr =
@@ -52,5 +53,5 @@ private:
 	// ents who has comps
 	std::map<Component::CompType, std::vector<EntityPtr> > comp_entities_;
 };
-
+} //ecs
 #endif

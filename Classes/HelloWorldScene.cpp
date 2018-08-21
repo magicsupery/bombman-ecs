@@ -30,11 +30,15 @@
 #include "src/system/controller_system.h"
 #include "src/system/render_system.h"
 
+#include "src/component/controller.hpp"
+
 #include "src/factory/entity_factory.h"
 #include "src/context/game_context.h"
 
-USING_NS_CC;
+#include "src/helper/utils.hpp"
 
+USING_NS_CC;
+using namespace ecs;
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -86,12 +90,57 @@ bool HelloWorld::init()
 	GameContext::running_scene = this;
 
 	// systemmanager add
+	SystemManager::getInstance()->addSystem<ControllerSystem>();
 	SystemManager::getInstance()->addSystem<MoveSystem>();
 	SystemManager::getInstance()->addSystem<RenderSystem>();
-	SystemManager::getInstance()->addSystem<ControllerSystem>();
 
 	// create player needed
 	EntityFactory::getInstance()->createP1();
+
+	// add the key listener
+	auto listener = EventListenerKeyboard::create();
+
+	listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
+		if(keycode == EventKeyboard::KeyCode::KEY_W)
+		{
+			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_W);
+		}
+
+		else if(keycode == EventKeyboard::KeyCode::KEY_D)
+		{
+			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_D);
+		}
+		else if(keycode == EventKeyboard::KeyCode::KEY_A)
+		{
+			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_A);
+		}
+		else if(keycode == EventKeyboard::KeyCode::KEY_S)
+		{
+			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_S);
+		}
+	};
+
+	listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
+		if(keycode == EventKeyboard::KeyCode::KEY_W)
+		{
+			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_W);
+		}
+
+		else if(keycode == EventKeyboard::KeyCode::KEY_D)
+		{
+			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_D);
+		}
+		else if(keycode == EventKeyboard::KeyCode::KEY_A)
+		{
+			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_A);
+		}
+		else if(keycode == EventKeyboard::KeyCode::KEY_S)
+		{
+			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_S);
+		}
+	};
+
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	/*
     /////////////////////////////
     // 3. add your codes below...

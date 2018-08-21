@@ -2,6 +2,8 @@
 #define  _HPP_UTILS_HPP_
 #include <unordered_map>
 #include <chrono>
+namespace  ecs
+{
 struct EnumClassHash
 {
     template <typename T>
@@ -25,4 +27,14 @@ inline std::time_t getTimeStamp()
 		 time_since_epoch() ).count();
 
 }
+
+enum class KeyboradCode
+{
+	KEY_W = 0x1,
+	KEY_S = 0x2,
+	KEY_A = 0x3,
+	KEY_D = 0x4,
+};
+
+}//ecs
 #endif

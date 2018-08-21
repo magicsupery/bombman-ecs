@@ -6,6 +6,8 @@
 
 #include "system.h"
 
+namespace ecs
+{
 class SystemManager
 {
 
@@ -83,4 +85,5 @@ private:
 	SystemPtrVecotr tick_systems_;
 	SystemPtrMap system_map_;
 };
+}
 #endif

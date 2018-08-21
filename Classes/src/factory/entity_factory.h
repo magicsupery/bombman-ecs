@@ -2,6 +2,8 @@
 #define _H_ENTITYFACTORY_H_
 
 #include "../ecs/entity.hpp"
+namespace ecs
+{
 class EntityFactory
 {
 
@@ -21,6 +23,6 @@ private:
 	static EntityFactory* instance_;
 
 };
-
+}//ecs
 #endif
 

@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+namespace ecs
+{
 Entity::Entity():
 	idx_(-1)
 {
@@ -62,3 +64,5 @@ std::string Entity::debugInfo()
 
 	return res;
 }
+
+} //ecs

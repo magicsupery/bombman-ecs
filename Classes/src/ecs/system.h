@@ -1,6 +1,8 @@
 #ifndef _H_SYSTEM_H_
 #define _H_SYSTEM_H_
 
+namespace ecs
+{
 class System
 {
 public:
@@ -19,4 +21,5 @@ public:
 	static SystemType system_id;
 
 };
+} // ecs
 #endif

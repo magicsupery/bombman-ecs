@@ -2,7 +2,8 @@
 #define _HPP_TRANSFROM_HPP_
 
 #include "../ecs/component.h"
-
+namespace ecs
+{
 class Transform: public Component
 {
 public:
@@ -15,6 +16,6 @@ public:
 	static Component::CompType comp_id;
 };
 
-
+}
 #endif
 

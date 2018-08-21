@@ -2,6 +2,8 @@
 #define _HPP_COMPONENT_H_
 #include <string>
 
+namespace ecs
+{
 class Component
 {
 
@@ -21,5 +23,5 @@ public:
 
 	static CompType comp_id;
 };
-
+} //ecs
 #endif

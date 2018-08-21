@@ -2,7 +2,8 @@
 #define  _HPP_MOVEALBE_HPP_
 
 #include "../ecs/component.h"
-
+namespace ecs
+{
 class Moveable: public Component
 {
 public:
@@ -15,5 +16,6 @@ public:
 	static Component::CompType comp_id;
 };
 
+}
 #endif
 

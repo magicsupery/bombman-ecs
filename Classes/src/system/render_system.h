@@ -3,6 +3,8 @@
 
 #include "../ecs/system.h"
 
+namespace  ecs
+{
 class RenderSystem : public System
 {
 public:
@@ -10,6 +12,6 @@ public:
 	virtual SystemType getSystemId() {return RenderSystem::system_id;}
 	static SystemType system_id;
 };
-
+} //ecs
 #endif
 

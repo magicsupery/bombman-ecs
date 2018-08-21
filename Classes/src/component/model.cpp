@@ -1,5 +1,8 @@
 #include "model.hpp"
 #include "src/context/game_context.h"
+
+namespace ecs
+{
 Component::CompType Model::comp_id = 4;
 
 
@@ -15,4 +18,4 @@ void Model::create_model(const std::string& path)
 	// add to scene
 	GameContext::running_scene->addChild(model_sprite);
 }
-
+} //ecs

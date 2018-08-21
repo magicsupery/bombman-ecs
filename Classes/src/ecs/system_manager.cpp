@@ -1,6 +1,8 @@
 #include "system_manager.h"
 #include "system.h"
 
+namespace ecs
+{
 SystemManager* SystemManager::instance_ = nullptr;
 
 SystemManager::~SystemManager()
@@ -20,4 +22,6 @@ void SystemManager::tick(float dt)
 {
 	for(auto const& v: tick_systems_)
 		v->tick(dt);
+}
+
 }
