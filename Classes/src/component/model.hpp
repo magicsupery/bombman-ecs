@@ -5,9 +5,6 @@
 
 #include "cocos2d.h"
 
-using SpritePtr=
-	std::shared_ptr<cocos2d::Sprite>;
-
 class Model: public Component
 {
 public:
@@ -21,6 +18,7 @@ public:
 	void create_model(const std::string& path);
 
 public:
-	SpritePtr model_sprite;
+	cocos2d::Sprite* model_sprite;
+
 };
 #endif

@@ -25,7 +25,7 @@ void RenderSystem::tick(float dt)
 		if(transform_comp_ptr == nullptr)
 			continue;
 
-		//model_comp_ptr->model_sprite->setPosition(transform_comp_ptr->pos_x, transform_comp_ptr->pos_y);
+		model_comp_ptr->model_sprite->setPosition(transform_comp_ptr->pos_x, transform_comp_ptr->pos_y);
 
 
 	}

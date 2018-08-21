@@ -59,6 +59,16 @@ list(APPEND GAME_HEADER
 	 Classes/src/ecs/entity_manager.h
 	 Classes/src/ecs/entity.hpp
 
+	 Classes/src/system/move_system.h
+	 Classes/src/system/controller_system.h
+	 Classes/src/system/render_system.h
+
+	 Classes/src/component/moveable.hpp
+	 Classes/src/component/transform.hpp
+	 Classes/src/component/controller.hpp
+	 Classes/src/component/model.hpp
+
+	 Classes/src/factory/entity_factory.h
 	 Classes/src/context/game_context.h
      )
 

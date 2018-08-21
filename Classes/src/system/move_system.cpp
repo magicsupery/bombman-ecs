@@ -41,5 +41,5 @@ void MoveSystem::handleMoveOp(EntityPtr ent_ptr, uint64_t op)
 		return;
 
 	move_comp_ptr->speed_x = (op & ControllerOpData::Rigth - op & ControllerOpData::Left) * move_comp_ptr->speed;
-	move_comp_ptr->speed_y = (op & ControllerOpData::Down - op & ControllerOpData::Up) * move_comp_ptr->speed;
+	move_comp_ptr->speed_y = (op & ControllerOpData::Up- op & ControllerOpData::Down) * move_comp_ptr->speed;
 }

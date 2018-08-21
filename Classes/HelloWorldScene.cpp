@@ -31,6 +31,8 @@
 #include "src/system/render_system.h"
 
 #include "src/factory/entity_factory.h"
+#include "src/context/game_context.h"
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -80,6 +82,8 @@ bool HelloWorld::init()
         float y = origin.y + closeItem->getContentSize().height/2;
         closeItem->setPosition(Vec2(x,y));
     }
+
+	GameContext::running_scene = this;
 
 	// systemmanager add
 	SystemManager::getInstance()->addSystem<MoveSystem>();

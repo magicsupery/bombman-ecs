@@ -1,22 +1,18 @@
 #include "model.hpp"
-
+#include "src/context/game_context.h"
 Component::CompType Model::comp_id = 4;
 
 
 Model::~Model()
 {
 	model_sprite->removeFromParent();
+	delete model_sprite;
 }
 
 void Model::create_model(const std::string& path)
 {
-	auto sprite = cocos2d::Sprite::create(path);
-	model_sprite = std::shared_ptr<cocos2d::Sprite>(sprite);
-
+	model_sprite = cocos2d::Sprite::create(path);
 	// add to scene
-	CCLOG("add p1 to the scene");
-	cocos2d::Director::getInstance()->getRunningScene()->addChild(model_sprite.get());
-
-	CCLOG("2 add p1 to the scene");
+	GameContext::running_scene->addChild(model_sprite);
 }
 
