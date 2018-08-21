@@ -6,8 +6,8 @@
 class Transform: public Component
 {
 public:
-	int pos_x;
-	int pos_y;
+	double pos_x;
+	double pos_y;
 
 	virtual std::string name() { return "Transform";}
 

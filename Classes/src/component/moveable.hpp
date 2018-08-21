@@ -6,9 +6,9 @@
 class Moveable: public Component
 {
 public:
-	int speed_x;
-	int speed_y;
-	int speed;
+	double speed_x;
+	double speed_y;
+	double speed;
 	virtual std::string name() {return "Moveable";}
 public:
 	virtual Component::CompType getCompId() {return Moveable::comp_id;}

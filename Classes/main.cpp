@@ -40,7 +40,7 @@ void test2()
 	auto comp_ptr_2 = std::make_shared<Moveable>();
 	comp_ptr_2->speed_x = 0;
 	comp_ptr_2->speed_y = 0;
-	comp_ptr_2->speed = 1;
+	comp_ptr_2->speed = 0.01;
 	entity_ptr->addComponent(comp_ptr_2);
 
 	auto comp_ptr_3 = std::make_shared<Controller>();
@@ -48,11 +48,7 @@ void test2()
 
 	EntityManager::getInstance()->addEntity(entity_ptr);
 
-	GameContext::player = entity_ptr;
-
-	SystemManager::getInstance()->addSystem<MoveSystem>();
-	SystemManager::getInstance()->addSystem<RenderSystem>();
-	SystemManager::getInstance()->addSystem<ControllerSystem>();
+	GameContext::input_p1= entity_ptr;
 
 	std::default_random_engine e;
 	std::uniform_int_distribution<unsigned>u (0,3);
@@ -66,12 +62,12 @@ void test2()
 	{
 		//随机数来给player增加操作
 		auto idx =u(e);
-		GameContext::player->getComponent<Controller>()->addOp(ControllerOp::Move, ops[idx]);
+		GameContext::input_p1->getComponent<Controller>()->addOp(ControllerOp::Move, ops[idx]);
 
 		if(idx % 2 == 0)
 		{
 			idx =u(e);
-			GameContext::player->getComponent<Controller>()->addOp(ControllerOp::Move, ops[idx]);
+			GameContext::input_p1->getComponent<Controller>()->addOp(ControllerOp::Move, ops[idx]);
 		}
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(30));
