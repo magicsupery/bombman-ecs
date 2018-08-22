@@ -21,6 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+#include <functional>
 
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
@@ -122,7 +123,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
 	// game tick
-	director->getScheduler()->schedule(game_tick, this, 0.033, kRepeatForever, 0, false, "game_tick");
+	director->getScheduler()->schedule(std::bind1st(std::mem_fun(&AppDelegate::game_tick), this), this, 0.033, kRepeatForever, 0, false, "game_tick");
+
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 
@@ -155,7 +157,7 @@ void AppDelegate::applicationWillEnterForeground() {
 #endif
 }
 
-void game_tick(float dt)
+void AppDelegate::game_tick(float dt)
 {
 	auto current_time = getTimeStamp();
 	auto real_dt = current_time - GameContext::last_tick_time;

@@ -33,7 +33,6 @@
 Private inheritance here hides part of interface from Director.
 */
 
-void game_tick(float dt);
 class  AppDelegate : private cocos2d::Application
 {
 public:
@@ -61,6 +60,7 @@ public:
     */
     virtual void applicationWillEnterForeground();
 
+	void game_tick(float dt);
 };
 
 #endif // _APP_DELEGATE_H_
