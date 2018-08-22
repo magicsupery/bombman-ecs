@@ -1,6 +1,7 @@
 #include "skill_system.h"
 #include "../helper/const.hpp"
 #include "../component/skill.hpp"
+#include "../log/logging.h"
 
 namespace ecs
 {
@@ -32,7 +33,7 @@ void SkillSystem::handleSkillId(EntityPtr ent_ptr, uint32_t skill_id)
 
 void SkillSystem::_handleSkill(std::shared_ptr<ActiveSkill> skill_comp_ptr, uint32_t skill_id)
 {
-
+	BOMBLOG("use skill %ld", skill_id);
 }
 
 } //ecs
