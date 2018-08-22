@@ -32,7 +32,6 @@ void MoveSystem::tick(float dt)
 		auto dist_y = move_comp_ptr->speed_y * dt;
 		transform_comp_ptr->pos_x += dist_x;
 		transform_comp_ptr->pos_y += dist_y;
-		CCLOG("posx is %f, posy is %f", transform_comp_ptr->pos_x, transform_comp_ptr->pos_y);
 	}
 
 }
@@ -44,10 +43,20 @@ void MoveSystem::handleMoveOp(EntityPtr ent_ptr, uint64_t op)
 	if(move_comp_ptr == nullptr)
 		return;
 
-	move_comp_ptr->speed_x = (op & ControllerOpData::Rigth - op & ControllerOpData::Left) * move_comp_ptr->speed;
-	move_comp_ptr->speed_y = (op & ControllerOpData::Up- op & ControllerOpData::Down) * move_comp_ptr->speed;
+	int8_t x_bit = 0;
+	if((op & ControllerOpData::Rigth) != 0)
+		x_bit += 1;
+	if((op & ControllerOpData::Left) != 0)
+		x_bit -= 1;
+	move_comp_ptr->speed_x = x_bit * move_comp_ptr->speed;
 
-	CCLOG("speed x is %f, speed y is %f", move_comp_ptr->speed_x, move_comp_ptr->speed_y);
+	int8_t y_bit = 0;
+	if((op & ControllerOpData::Up) != 0)
+		y_bit += 1;
+	if((op & ControllerOpData::Down) != 0)
+		y_bit -= 1;
+	move_comp_ptr->speed_y = y_bit * move_comp_ptr->speed;
+
 }
 
 } //ecs

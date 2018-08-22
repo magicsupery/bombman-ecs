@@ -122,7 +122,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
 	// game tick
-	director->getScheduler()->schedule(game_tick, this, 1.0, kRepeatForever, 0, false, "game_tick");
+	director->getScheduler()->schedule(game_tick, this, 0.033, kRepeatForever, 0, false, "game_tick");
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

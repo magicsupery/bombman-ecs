@@ -10,6 +10,9 @@ public:
 	virtual void tick(float dt);
 	virtual SystemType getSystemId() {return ControllerSystem::system_id;}
 	static SystemType system_id;
+
+public:
+	void notify_keyboard_move_event_changed();
 };
 } //ecs
 #endif

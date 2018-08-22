@@ -13,4 +13,9 @@ void Controller::addOp(ControllerOp op, ControllerOpData op_data)
 	op_map_[op] |= op_data;
 }
 
+void Controller::clearOp(ControllerOp op)
+{
+	op_map_[op] = 0;
+}
+
 } //ecs

@@ -39,6 +39,7 @@ class Controller: public Component
 {
 public:
 	void addOp(ControllerOp op, ControllerOpData op_data);
+	void clearOp(ControllerOp op);
 	OpMap op_map_;
 
 public:

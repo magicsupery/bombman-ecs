@@ -39,7 +39,7 @@ EntityPtr EntityFactory::createP1()
 	auto comp_ptr_2 = std::make_shared<Moveable>();
 	comp_ptr_2->speed_x = 0;
 	comp_ptr_2->speed_y = 0;
-	comp_ptr_2->speed = 0.01;
+	comp_ptr_2->speed = 0.05;
 	entity_ptr->addComponent(comp_ptr_2);
 
 	auto comp_ptr_3 = std::make_shared<Controller>();

@@ -40,4 +40,36 @@ void ControllerSystem::tick(float dt)
 	}
 
 }
+
+void ControllerSystem::notify_keyboard_move_event_changed()
+{
+	auto p1 = GameContext::input_p1;
+	if(p1 == nullptr)
+		return;
+
+	auto controller_comp_ptr = p1->getComponent<Controller>();
+	if(controller_comp_ptr == nullptr)
+		return;
+
+	controller_comp_ptr->clearOp(ControllerOp::Move);
+	auto keyboard_bit = GameContext::keybord_bit;
+	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_W)) != 0)
+	{
+		controller_comp_ptr->addOp(ControllerOp::Move, ControllerOpData::Up);
+	}
+	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_S)) != 0)
+	{
+		controller_comp_ptr->addOp(ControllerOp::Move, ControllerOpData::Down);
+	}
+	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_A)) != 0)
+	{
+		controller_comp_ptr->addOp(ControllerOp::Move, ControllerOpData::Left);
+	}
+	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_D)) != 0)
+	{
+		controller_comp_ptr->addOp(ControllerOp::Move, ControllerOpData::Rigth);
+	}
+}
+
+
 } //ecs

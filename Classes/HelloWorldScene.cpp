@@ -97,7 +97,7 @@ bool HelloWorld::init()
 	// create player needed
 	EntityFactory::getInstance()->createP1();
 
-	// add the key listener
+	// add the move key listener
 	auto listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
@@ -118,6 +118,8 @@ bool HelloWorld::init()
 		{
 			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_S);
 		}
+
+		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
 	};
 
 	listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
@@ -125,7 +127,6 @@ bool HelloWorld::init()
 		{
 			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_W);
 		}
-
 		else if(keycode == EventKeyboard::KeyCode::KEY_D)
 		{
 			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_D);
@@ -138,6 +139,8 @@ bool HelloWorld::init()
 		{
 			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_S);
 		}
+
+		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
 	};
 
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);

@@ -9,7 +9,6 @@ Component::CompType Model::comp_id = 4;
 Model::~Model()
 {
 	model_sprite->removeFromParent();
-	delete model_sprite;
 }
 
 void Model::create_model(const std::string& path)
