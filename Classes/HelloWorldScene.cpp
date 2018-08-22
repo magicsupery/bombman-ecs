@@ -29,6 +29,7 @@
 #include "src/system/move_system.h"
 #include "src/system/controller_system.h"
 #include "src/system/render_system.h"
+#include "src/system/skill_system.h"
 
 #include "src/component/controller.hpp"
 
@@ -93,7 +94,7 @@ bool HelloWorld::init()
 	SystemManager::getInstance()->addSystem<ControllerSystem>();
 	SystemManager::getInstance()->addSystem<MoveSystem>();
 	SystemManager::getInstance()->addSystem<RenderSystem>();
-
+	SystemManager::getInstance()->addSystem<SkillSystem>();
 	// create player needed
 	EntityFactory::getInstance()->createP1();
 

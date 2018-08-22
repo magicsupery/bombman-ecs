@@ -3,6 +3,5 @@
 
 namespace ecs
 {
-Component::CompType Skill::comp_id = COMPONENT_ID_SKILL;
-
+Component::CompType ActiveSkill::comp_id = COMPONENT_ID_SKILL;
 }

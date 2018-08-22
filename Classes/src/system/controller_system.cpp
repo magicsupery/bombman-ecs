@@ -1,5 +1,6 @@
 #include "controller_system.h"
 #include "move_system.h"
+#include "skill_system.h"
 
 #include "../ecs/entity_manager.h"
 #include "../ecs/system_manager.h"
@@ -83,11 +84,10 @@ void ControllerSystem::notify_keyboard_skill_event_changed()
 	if(controller_comp_ptr == nullptr)
 		return;
 
-	controller_comp_ptr->clearOp(ControllerOp::Skill);
 	auto keyboard_bit = GameContext::keybord_bit;
 	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_J)) != 0)
 	{
-		controller_comp_ptr->addOp(ControllerOp::Skill, ControllerOpData::SkillActiveOne);
+		SystemManager::getInstance()->getSystem<SkillSystem>()->handleSkillOp(p1, ControllerOpData::SkillOne);
 	}
 
 }

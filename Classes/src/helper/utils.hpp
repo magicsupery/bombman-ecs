@@ -20,6 +20,22 @@ template <typename Key, typename T>
 using BoomUnorderedMap = std::unordered_map<Key, T, HashType<Key>>;
 
 
+enum ControllerOp
+{
+	Move,
+	Skill,
+};
+
+enum ControllerOpData
+{
+	Up = 0x1,
+	Down = 0x2,
+	Left = 0x4,
+	Rigth = 0x8,
+
+	SkillOne = 0x10,
+};
+
 inline std::time_t getTimeStamp()
 {
     return std::chrono::duration_cast<std::chrono::milliseconds>

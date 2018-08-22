@@ -4,8 +4,10 @@
 #include "../component/moveable.hpp"
 #include "../component/controller.hpp"
 #include "../component/model.hpp"
+#include "../component/skill.hpp"
 
 #include "../context/game_context.h"
+#include "../helper/utils.hpp"
 
 namespace ecs
 {
@@ -49,6 +51,10 @@ EntityPtr EntityFactory::createP1()
 	model_ptr->create_model("p1.jpg");
 	entity_ptr->addComponent(model_ptr);
 
+	auto skill_ptr = std::make_shared<ActiveSkill>();
+	//todo parse from data
+	skill_ptr->idx2id_map_[ControllerOpData::SkillOne] = 1;
+	entity_ptr->addComponent(skill_ptr);
 
 	EntityManager::getInstance()->addEntity(entity_ptr);
 
