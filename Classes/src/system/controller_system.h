@@ -13,6 +13,7 @@ public:
 
 public:
 	void notify_keyboard_move_event_changed();
+	void notify_keyboard_skill_event_changed();
 };
 } //ecs
 #endif

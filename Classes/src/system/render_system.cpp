@@ -3,10 +3,11 @@
 #include "../ecs/entity_manager.h"
 #include "../component/transform.hpp"
 #include "../component/model.hpp"
+#include "../helper/const.hpp"
 
 namespace ecs
 {
-System::SystemType RenderSystem::system_id = 2;
+System::SystemType RenderSystem::system_id = SYSTEM_ID_RENDER;
 
 void RenderSystem::tick(float dt)
 {

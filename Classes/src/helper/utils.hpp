@@ -34,6 +34,7 @@ enum class KeyboradCode
 	KEY_S = 0x2,
 	KEY_A = 0x4,
 	KEY_D = 0x8,
+	KEY_J = 0x10,
 };
 
 }//ecs

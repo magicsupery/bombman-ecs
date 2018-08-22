@@ -98,9 +98,9 @@ bool HelloWorld::init()
 	EntityFactory::getInstance()->createP1();
 
 	// add the move key listener
-	auto listener = EventListenerKeyboard::create();
+	auto move_listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
+	move_listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
 		if(keycode == EventKeyboard::KeyCode::KEY_W)
 		{
 			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_W);
@@ -120,9 +120,10 @@ bool HelloWorld::init()
 		}
 
 		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
+
 	};
 
-	listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
+	move_listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
 		if(keycode == EventKeyboard::KeyCode::KEY_W)
 		{
 			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_W);
@@ -143,7 +144,29 @@ bool HelloWorld::init()
 		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
 	};
 
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(move_listener, this);
+
+
+	// add the skill key listener
+	auto skill_listener = EventListenerKeyboard::create();
+
+	skill_listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
+		if(keycode == EventKeyboard::KeyCode::KEY_J)
+		{
+			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_J);
+		}
+		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_skill_event_changed();
+	};
+
+	skill_listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
+		if(keycode == EventKeyboard::KeyCode::KEY_J)
+		{
+			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_J);
+		}
+
+		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_skill_event_changed();
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(skill_listener, this);
 	/*
     /////////////////////////////
     // 3. add your codes below...

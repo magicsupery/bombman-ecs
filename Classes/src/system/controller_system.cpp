@@ -8,10 +8,11 @@
 
 #include "../context/game_context.h"
 #include "../helper/utils.hpp"
+#include "../helper/const.hpp"
 
 namespace ecs
 {
-System::SystemType ControllerSystem::system_id = 3;
+System::SystemType ControllerSystem::system_id = SYSTEM_ID_CONTROLLER;
 
 void ControllerSystem::tick(float dt)
 {
@@ -71,5 +72,24 @@ void ControllerSystem::notify_keyboard_move_event_changed()
 	}
 }
 
+void ControllerSystem::notify_keyboard_skill_event_changed()
+{
+
+	auto p1 = GameContext::input_p1;
+	if(p1 == nullptr)
+		return;
+
+	auto controller_comp_ptr = p1->getComponent<Controller>();
+	if(controller_comp_ptr == nullptr)
+		return;
+
+	controller_comp_ptr->clearOp(ControllerOp::Skill);
+	auto keyboard_bit = GameContext::keybord_bit;
+	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_J)) != 0)
+	{
+		controller_comp_ptr->addOp(ControllerOp::Skill, ControllerOpData::SkillActiveOne);
+	}
+
+}
 
 } //ecs

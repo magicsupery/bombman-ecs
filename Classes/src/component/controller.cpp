@@ -1,8 +1,8 @@
 #include "controller.hpp"
-
+#include "../helper/const.hpp"
 namespace ecs
 {
-Component::CompType Controller::comp_id = 3;
+Component::CompType Controller::comp_id = COMPONENT_ID_CONTROLLER;
 
 void Controller::addOp(ControllerOp op, ControllerOpData op_data)
 {

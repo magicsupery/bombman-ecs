@@ -1,9 +1,9 @@
 #include "model.hpp"
-#include "src/context/game_context.h"
-
+#include "../context/game_context.h"
+#include "../helper/const.hpp"
 namespace ecs
 {
-Component::CompType Model::comp_id = 4;
+Component::CompType Model::comp_id = COMPONENT_ID_MODEL;
 
 
 Model::~Model()

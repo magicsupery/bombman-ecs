@@ -4,12 +4,11 @@
 #include "../component/moveable.hpp"
 #include "../component/transform.hpp"
 #include "../component/controller.hpp"
-
-#include "cocos2d.h"
+#include "../helper/const.hpp"
 
 namespace ecs
 {
-System::SystemType MoveSystem::system_id = 1;
+System::SystemType MoveSystem::system_id = SYSTEM_ID_MOVE;
 
 void MoveSystem::tick(float dt)
 {

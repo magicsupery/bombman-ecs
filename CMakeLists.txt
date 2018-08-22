@@ -39,11 +39,13 @@ list(APPEND GAME_SOURCE
 	 Classes/src/system/move_system.cpp
 	 Classes/src/system/controller_system.cpp
 	 Classes/src/system/render_system.cpp
+	 Classes/src/system/skill_system.cpp
 
 	 Classes/src/component/moveable.cpp
 	 Classes/src/component/transform.cpp
 	 Classes/src/component/controller.cpp
 	 Classes/src/component/model.cpp
+	 Classes/src/component/skill.cpp
 
 	 Classes/src/context/game_context.cpp
 
@@ -62,11 +64,13 @@ list(APPEND GAME_HEADER
 	 Classes/src/system/move_system.h
 	 Classes/src/system/controller_system.h
 	 Classes/src/system/render_system.h
+	 Classes/src/system/skill_system.h
 
 	 Classes/src/component/moveable.hpp
 	 Classes/src/component/transform.hpp
 	 Classes/src/component/controller.hpp
 	 Classes/src/component/model.hpp
+	 Classes/src/component/skill.hpp
 
 	 Classes/src/factory/entity_factory.h
 	 Classes/src/context/game_context.h
