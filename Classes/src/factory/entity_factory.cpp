@@ -48,7 +48,7 @@ EntityPtr EntityFactory::createP1()
 	entity_ptr->addComponent(comp_ptr_3);
 
 	auto model_ptr = std::make_shared<Model>();
-	model_ptr->create_model("p1.jpg");
+	model_ptr->create_model("p1.png");
 	entity_ptr->addComponent(model_ptr);
 
 	auto skill_ptr = std::make_shared<ActiveSkill>();

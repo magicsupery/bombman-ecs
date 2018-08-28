@@ -88,6 +88,9 @@ bool HelloWorld::init()
         closeItem->setPosition(Vec2(x,y));
     }
 
+	//add map
+	auto map = TMXTiledMap::create("bombman.tmx");
+	this->addChild(map, -1);
 	GameContext::running_scene = this;
 
 	// systemmanager add
@@ -109,14 +112,17 @@ bool HelloWorld::init()
 
 		else if(keycode == EventKeyboard::KeyCode::KEY_D)
 		{
+
 			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_D);
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_A)
 		{
+
 			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_A);
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_S)
 		{
+
 			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_S);
 		}
 
