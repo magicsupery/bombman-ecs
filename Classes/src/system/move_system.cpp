@@ -4,7 +4,10 @@
 #include "../component/moveable.hpp"
 #include "../component/transform.hpp"
 #include "../component/controller.hpp"
+#include "../component/collision.hpp"
+
 #include "../helper/const.hpp"
+
 
 namespace ecs
 {
@@ -31,6 +34,20 @@ void MoveSystem::tick(float dt)
 		auto dist_y = move_comp_ptr->speed_y * dt;
 		transform_comp_ptr->pos_x += dist_x;
 		transform_comp_ptr->pos_y += dist_y;
+
+		auto collision_comp_ptr = move_ent_ptr->getComponent<Collision>();
+		if(collision_comp_ptr == nullptr)
+			continue;
+
+		auto& rect = collision_comp_ptr->collistion_rect;
+		rect.origin.x += dist_x;
+		rect.origin.y += dist_y;
+
+		auto draw_node = collision_comp_ptr->draw_node;
+		if(draw_node == nullptr)
+			continue;
+
+		draw_node->setPosition(cocos2d::Vec2(dist_x, dist_y) + draw_node->getPosition());
 	}
 
 }

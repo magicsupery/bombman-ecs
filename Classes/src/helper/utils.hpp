@@ -2,6 +2,8 @@
 #define  _HPP_UTILS_HPP_
 #include <unordered_map>
 #include <chrono>
+#include "cocos2d.h"
+
 namespace  ecs
 {
 struct EnumClassHash
@@ -28,6 +30,7 @@ enum ControllerOp
 
 enum ControllerOpData
 {
+	Nothing = 0x0,
 	Up = 0x1,
 	Down = 0x2,
 	Left = 0x4,
@@ -53,5 +56,8 @@ enum class KeyboradCode
 	KEY_J = 0x10,
 };
 
+
+using EcsRect =
+	cocos2d::Rect;
 }//ecs
 #endif

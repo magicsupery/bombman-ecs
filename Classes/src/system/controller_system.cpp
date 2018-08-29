@@ -17,7 +17,8 @@ System::SystemType ControllerSystem::system_id = SYSTEM_ID_CONTROLLER;
 
 void ControllerSystem::tick(float dt)
 {
-
+	return;
+	/*
 	auto controller_ents_ptr = EntityManager::getInstance()->getEntitiesByComp<Controller>();
 
 	if(controller_ents_ptr == nullptr)
@@ -40,6 +41,7 @@ void ControllerSystem::tick(float dt)
 		}
 		controller_comp_ptr->op_map_.clear();
 	}
+	*/
 
 }
 
@@ -53,6 +55,30 @@ void ControllerSystem::notify_keyboard_move_event_changed()
 	if(controller_comp_ptr == nullptr)
 		return;
 
+	auto op = ControllerOpData::Nothing;
+	if(GameContext::move_keyboardcode_vector.size() != 0)
+	{
+		auto last_keycode = GameContext::move_keyboardcode_vector.back();
+		if(last_keycode == KeyboradCode::KEY_W)
+		{
+			op = ControllerOpData::Up;
+		}
+		else if(last_keycode == KeyboradCode::KEY_S)
+		{
+			op = ControllerOpData::Down;
+		}
+		else if(last_keycode == KeyboradCode::KEY_A)
+		{
+			op = ControllerOpData::Left;
+		}
+		else if(last_keycode == KeyboradCode::KEY_D)
+		{
+			op = ControllerOpData::Rigth;
+		}
+	}
+	SystemManager::getInstance()->getSystem<MoveSystem>()->handleMoveOp(p1, op);
+
+	/*
 	controller_comp_ptr->clearOp(ControllerOp::Move);
 	auto keyboard_bit = GameContext::keybord_bit;
 	if((keyboard_bit & static_cast<uint64_t>(KeyboradCode::KEY_W)) != 0)
@@ -71,6 +97,7 @@ void ControllerSystem::notify_keyboard_move_event_changed()
 	{
 		controller_comp_ptr->addOp(ControllerOp::Move, ControllerOpData::Rigth);
 	}
+	*/
 }
 
 void ControllerSystem::notify_keyboard_skill_event_changed()

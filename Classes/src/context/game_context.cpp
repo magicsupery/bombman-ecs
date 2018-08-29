@@ -11,4 +11,6 @@ cocos2d::Scene* GameContext::running_scene = nullptr;
 
 uint64_t GameContext::keybord_bit = 0x0;
 
+KeyboardCodeVector GameContext::move_keyboardcode_vector;
+
 } //ecs

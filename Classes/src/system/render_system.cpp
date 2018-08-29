@@ -3,7 +3,11 @@
 #include "../ecs/entity_manager.h"
 #include "../component/transform.hpp"
 #include "../component/model.hpp"
+#include "../component/collision.hpp"
 #include "../helper/const.hpp"
+#include "../log/logging.h"
+
+#include "../context/game_context.h"
 
 namespace ecs
 {
@@ -29,6 +33,8 @@ void RenderSystem::tick(float dt)
 			continue;
 
 		model_comp_ptr->model_sprite->setPosition(transform_comp_ptr->pos_x, transform_comp_ptr->pos_y);
+
+
 
 
 	}

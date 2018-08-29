@@ -22,6 +22,8 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+#include <algorithm>
+
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 
@@ -104,26 +106,33 @@ bool HelloWorld::init()
 	// add the move key listener
 	auto move_listener = EventListenerKeyboard::create();
 
+	//之前使用bit是因为忽略了炸弹人的移动方式，
+	//根据炸弹人手感调优，还是需要使用最后按下的移动方向进行移动来调整
+	//所以最终决定使用vector，而不是bit位进行记录
 	move_listener->onKeyPressed = [](EventKeyboard::KeyCode keycode , Event* event){
 		if(keycode == EventKeyboard::KeyCode::KEY_W)
 		{
-			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_W);
+			//GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_W);
+			GameContext::move_keyboardcode_vector.emplace_back(KeyboradCode::KEY_W);
 		}
 
 		else if(keycode == EventKeyboard::KeyCode::KEY_D)
 		{
 
-			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_D);
+			//GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_D);
+			GameContext::move_keyboardcode_vector.emplace_back(KeyboradCode::KEY_D);
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_A)
 		{
 
-			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_A);
+			//GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_A);
+			GameContext::move_keyboardcode_vector.emplace_back(KeyboradCode::KEY_A);
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_S)
 		{
 
-			GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_S);
+			//GameContext::keybord_bit |= static_cast<unsigned long long>(KeyboradCode::KEY_S);
+			GameContext::move_keyboardcode_vector.emplace_back(KeyboradCode::KEY_S);
 		}
 
 		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
@@ -133,19 +142,35 @@ bool HelloWorld::init()
 	move_listener->onKeyReleased = [](EventKeyboard::KeyCode keycode , Event* event){
 		if(keycode == EventKeyboard::KeyCode::KEY_W)
 		{
-			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_W);
+			//GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_W);
+			GameContext::move_keyboardcode_vector.erase(std::remove(
+						GameContext::move_keyboardcode_vector.begin(),
+						GameContext::move_keyboardcode_vector.end(),
+						KeyboradCode::KEY_W));
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_D)
 		{
-			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_D);
+			//GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_D);
+			GameContext::move_keyboardcode_vector.erase(std::remove(
+						GameContext::move_keyboardcode_vector.begin(),
+						GameContext::move_keyboardcode_vector.end(),
+						KeyboradCode::KEY_D));
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_A)
 		{
-			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_A);
+			//GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_A);
+			GameContext::move_keyboardcode_vector.erase(std::remove(
+						GameContext::move_keyboardcode_vector.begin(),
+						GameContext::move_keyboardcode_vector.end(),
+						KeyboradCode::KEY_A));
 		}
 		else if(keycode == EventKeyboard::KeyCode::KEY_S)
 		{
-			GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_S);
+			//GameContext::keybord_bit &= ~static_cast<unsigned long long>(KeyboradCode::KEY_S);
+			GameContext::move_keyboardcode_vector.erase(std::remove(
+						GameContext::move_keyboardcode_vector.begin(),
+						GameContext::move_keyboardcode_vector.end(),
+						KeyboradCode::KEY_S));
 		}
 
 		SystemManager::getInstance()->getSystem<ControllerSystem>()->notify_keyboard_move_event_changed();
