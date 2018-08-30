@@ -20,7 +20,7 @@ public:
 	void createDebugDrawNode();
 public:
 	//现在只支持长方向的collistion
-	EcsRect collistion_rect;
+	BombRect collistion_rect;
 	cocos2d::DrawNode* draw_node;
 };
 

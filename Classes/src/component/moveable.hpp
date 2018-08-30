@@ -2,13 +2,14 @@
 #define  _HPP_MOVEALBE_HPP_
 
 #include "../ecs/component.h"
+#include "../helper/utils.hpp"
+
 namespace ecs
 {
 class Moveable: public Component
 {
 public:
-	double speed_x;
-	double speed_y;
+	BombVec2 speed_vec;
 	double speed;
 	virtual std::string name() {return "Moveable";}
 public:

@@ -10,7 +10,7 @@ void CollisionSystem::tick(float dt)
 
 }
 
-bool CollisionSystem::isCollision(const EcsRect& rec1, const EcsRect& rec2)
+bool CollisionSystem::isCollision(const BombRect& rec1, const BombRect& rec2)
 {
 	return true;
 }

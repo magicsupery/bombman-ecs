@@ -16,7 +16,7 @@ public:
 	static SystemType system_id;
 
 public:
-	bool isCollision(const EcsRect& rec1, const EcsRect& rec2);
+	bool isCollision(const BombRect& rec1, const BombRect& rec2);
 };
 } //ecs
 #endif

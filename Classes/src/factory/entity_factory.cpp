@@ -40,8 +40,6 @@ EntityPtr EntityFactory::createP1()
 	entity_ptr->addComponent(comp_ptr);
 
 	auto comp_ptr_2 = std::make_shared<Moveable>();
-	comp_ptr_2->speed_x = 0;
-	comp_ptr_2->speed_y = 0;
 	comp_ptr_2->speed = 0.1;
 	entity_ptr->addComponent(comp_ptr_2);
 
@@ -51,8 +49,8 @@ EntityPtr EntityFactory::createP1()
 	auto model_ptr = std::make_shared<Model>();
 	model_ptr->create_model("p1.png");
 	model_ptr->model_sprite->setAnchorPoint(cocos2d::Vec2(0.5, 0));
-	comp_ptr->pos_x = model_ptr->model_sprite->getContentSize().width /2;
-	model_ptr->model_sprite->setPosition(cocos2d::Vec2(comp_ptr->pos_x, comp_ptr->pos_y));
+	comp_ptr->pos.x = model_ptr->model_sprite->getContentSize().width /2;
+	model_ptr->model_sprite->setPosition(comp_ptr->pos);
 	entity_ptr->addComponent(model_ptr);
 
 	auto skill_ptr = std::make_shared<ActiveSkill>();

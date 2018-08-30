@@ -30,10 +30,10 @@ void MoveSystem::tick(float dt)
 			continue;
 
 		//tmp code set the pos
-		auto dist_x = move_comp_ptr->speed_x * dt;
-		auto dist_y = move_comp_ptr->speed_y * dt;
-		transform_comp_ptr->pos_x += dist_x;
-		transform_comp_ptr->pos_y += dist_y;
+		auto dist_x = move_comp_ptr->speed_vec.x * dt;
+		auto dist_y = move_comp_ptr->speed_vec.y * dt;
+		transform_comp_ptr->pos.x += dist_x;
+		transform_comp_ptr->pos.y += dist_y;
 
 		auto collision_comp_ptr = move_ent_ptr->getComponent<Collision>();
 		if(collision_comp_ptr == nullptr)
@@ -64,14 +64,14 @@ void MoveSystem::handleMoveOp(EntityPtr ent_ptr, uint64_t op)
 		x_bit += 1;
 	if((op & ControllerOpData::Left) != 0)
 		x_bit -= 1;
-	move_comp_ptr->speed_x = x_bit * move_comp_ptr->speed;
+	move_comp_ptr->speed_vec.x = x_bit * move_comp_ptr->speed;
 
 	int8_t y_bit = 0;
 	if((op & ControllerOpData::Up) != 0)
 		y_bit += 1;
 	if((op & ControllerOpData::Down) != 0)
 		y_bit -= 1;
-	move_comp_ptr->speed_y = y_bit * move_comp_ptr->speed;
+	move_comp_ptr->speed_vec.y = y_bit * move_comp_ptr->speed;
 
 }
 

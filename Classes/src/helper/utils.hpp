@@ -57,7 +57,10 @@ enum class KeyboradCode
 };
 
 
-using EcsRect =
+using BombRect =
 	cocos2d::Rect;
+using BombVec2 =
+	cocos2d::Vec2;
+
 }//ecs
 #endif
